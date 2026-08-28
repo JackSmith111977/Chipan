@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>赤盘 · 盯盘看板</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="top">
+        <div class="brand">
+          <small>CHIPAN</small>
+          <h1>盯盘看板</h1>
+        </div>
+        <div class="account">
+          <a class="hint" href="/">回到介绍</a>
+          <button type="button" class="account-btn" id="accountBtn">账号</button>
+        </div>
+      </header>
+      <div id="tape" class="tape"></div>
+      <div class="grid">
+        <aside class="panel ask">
+          <h2>问什么</h2>
+          <div class="ask-body pad">
+            <label>标的代码</label>
+            <input id="symbol" type="text" value="sh600519" spellcheck="false" />
+            <label>这个问题</label>
+            <div id="strats" class="strats"></div>
+            <button id="moreIntents" class="link" type="button">还有两个问题：有没有事 / 板块热不热</button>
+            <button id="tuneBtn" class="link" type="button">进阶：改权重</button>
+            <div id="tune" class="hidden">
+              <label>维度权重</label>
+              <div id="weights"></div>
+              <label>阈值</label>
+              <div class="params">
+                <div>
+                  <label>RSI 超买</label>
+                  <input id="rsiHigh" type="number" min="55" max="85" step="1" />
+                </div>
+                <div>
+                  <label>RSI 超卖</label>
+                  <input id="rsiLow" type="number" min="15" max="45" step="1" />
+                </div>
+                <div>
+                  <label>放量阈值</label>
+                  <input id="volHot" type="number" min="0.8" max="2.5" step="0.1" />
+                </div>
+                <div>
+                  <label>视野（日）</label>
+                  <input id="horizon" type="number" min="3" max="10" step="1" />
+                </div>
+              </div>
+            </div>
+            <input id="nearLimit" type="hidden" value="8" />
+          </div>
+          <div class="ask-foot">
+            <p class="run-note" id="runNote">取证一次，换问题只改镜头</p>
+            <button class="go" id="run" type="button">生成这份研判</button>
+          </div>
+        </aside>
+        <section class="panel">
+          <h2>决策卡</h2>
+          <div class="quote" id="quoteBar">输入代码后显示最新价</div>
+          <div class="chart-wrap">
+            <div class="chart-head">
+              <span>分时</span>
+              <span id="chartTip" class="chart-tip"></span>
+            </div>
+            <div id="chart" class="chart"></div>
+          </div>
+          <div class="track-box" id="track">
+            <div class="steps" id="steps">
+              <div class="step" data-id="queued"></div>
+              <div class="step" data-id="gathering"></div>
+              <div class="step" data-id="scoring"></div>
+              <div class="step" data-id="reasoning"></div>
+            </div>
+            <div class="step-labels">
+              <span>接单</span><span>取证</span><span>打分</span><span>综合</span>
+            </div>
+            <div class="meter"><i id="meter"></i></div>
+            <div class="sources" id="sources"></div>
+          </div>
+          <div class="status" id="status">选一个问题后生成。同一问题四小时内不重复消耗。</div>
+          <div class="pad" id="out"><div class="empty">还没有决策卡</div></div>
+        </section>
+      </div>
+    </div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

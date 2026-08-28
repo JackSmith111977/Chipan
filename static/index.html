@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>赤盘 · 先问一句，再决定动不动</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body class="land">
+    <header class="land-nav">
+      <div class="brand">
+        <small>CHIPAN</small>
+        <strong>赤盘</strong>
+      </div>
+      <div class="land-nav-actions">
+        <span id="landHello" class="hint"></span>
+        <button type="button" class="account-btn" id="accountBtn">登录</button>
+      </div>
+    </header>
+
+    <main class="land-hero">
+      <p class="eyebrow">盯盘看板 · 决策卡 · 每天 30 次</p>
+      <h1>先问一句，<br />再决定动不动。</h1>
+      <p class="lead">
+        赤盘不堆指标。你选一个问题，系统取行情、板块、新闻，压成一张卡：
+        立场、入场、止损、认错位。看完再动手。
+      </p>
+      <div class="land-cta">
+        <button type="button" class="go land-go" id="enterBtn">登录后进入看板</button>
+        <p class="fine" id="needNote"></p>
+      </div>
+    </main>
+
+    <section class="land-grid">
+      <article class="land-card preview">
+        <header>
+          <span>决策卡预览</span>
+          <b class="badge">先观望</b>
+        </header>
+        <p class="thesis">量价还没对齐，先不要用身位去赌方向。</p>
+        <div class="book">
+          <div class="side on">
+            <div class="side-h"><b>做多预案</b><span>盈亏约 1:2.1</span></div>
+            <div class="prices">
+              <div><small>入场区间</small><b>1682 – 1694</b></div>
+              <div><small>止损</small><b class="down">1668</b></div>
+              <div><small>目标区间</small><b class="up">1728 – 1746</b></div>
+            </div>
+          </div>
+          <div class="side">
+            <div class="side-h"><b>做空预案</b><span>盈亏约 1:1.6</span></div>
+            <div class="prices">
+              <div><small>入场区间</small><b>1718 – 1730</b></div>
+              <div><small>止损</small><b class="down">1744</b></div>
+              <div><small>目标区间</small><b class="up">1674 – 1662</b></div>
+            </div>
+          </div>
+        </div>
+        <p class="invalidate">跌破 1668 或放量冲高回落，这张卡作废。</p>
+      </article>
+      <div class="land-points">
+        <article>
+          <small>01</small>
+          <h2>六个问题，一张卡</h2>
+          <p>能不能追、能不能抄、拿着怎么办。换问题只换镜头，不重复烧次数。</p>
+        </article>
+        <article>
+          <small>02</small>
+          <h2>证据能核对</h2>
+          <p>分时、板块、新闻和模型草稿同屏。模型只解释证据，不凭空给方向。</p>
+        </article>
+        <article>
+          <small>03</small>
+          <h2>账号管额度</h2>
+          <p>Google、X 或邮箱登录。研判记在你名下，每人每天 30 次，缓存不扣次。</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="land-foot">
+      <p>赤盘是研究工具，不是投资建议。盈亏自负。</p>
+    </footer>
+
+    <div id="authMask" class="auth-mask hidden">
+      <div class="auth-card" role="dialog" aria-labelledby="authTitle">
+        <div class="auth-head">
+          <h2 id="authTitle">登录赤盘</h2>
+          <button type="button" class="link" id="authClose">关闭</button>
+        </div>
+        <p class="auth-lead">登录后进入盯盘看板。次数记在账号上，每天 30 次。</p>
+        <div class="oauth">
+          <button type="button" class="oauth-btn" data-provider="google">用 Google 继续</button>
+          <button type="button" class="oauth-btn" data-provider="x">用 X 继续</button>
+        </div>
+        <p class="auth-or">或用邮箱</p>
+        <form id="authForm">
+          <label>邮箱</label>
+          <input id="authEmail" type="email" autocomplete="username" required />
+          <label>密码</label>
+          <input id="authPass" type="password" autocomplete="current-password" minlength="8" required />
+          <label id="authNameLabel" class="hidden">怎么称呼</label>
+          <input id="authName" class="hidden" type="text" maxlength="40" />
+          <p class="auth-err" id="authErr"></p>
+          <button class="go" id="authSubmit" type="submit">登录并进入看板</button>
+        </form>
+        <button type="button" class="link" id="authToggle">没有账号，去注册</button>
+      </div>
+    </div>
+    <script src="/static/landing.js"></script>
+  </body>
+</html>
